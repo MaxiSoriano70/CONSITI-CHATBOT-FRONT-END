@@ -1,0 +1,293 @@
+:root {
+    --color-1: #079474;
+    --color-2: #10a37f;
+    --color-3: #A484E8;
+    --color-4: #D5C1FF;
+    --color-5 : #4e42c0;
+    --color-6 : #cbd3fa;
+    --color-fondo-white: #F4F4F4;
+    --color-mode-white: #FFF;
+    --color-linea-white: #BFBFBF;
+    --color-fondo-dark: #1E1F22;
+    --color-mode-dark: #404450;
+    --color-linea-dark: #BFBFBF;
+    --color-blanco: #fff;
+    --color-negro: #000;
+    --color-gris: #D6D6D6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fondoWhite{
+    background-color: var(--color-fondo-white);
+}
+
+.fondoDark{
+    background-color: var(--color-fondo-dark);
+}
+
+.modoWhite{
+    background-color: var(--color-mode-white);
+    color: var(--color-negro);
+}
+
+.modoDark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+}
+
+.lineaWhite{
+    background-color: var(--color-linea-white);
+}
+
+.lineaDark{
+    background-color: var(--color-linea-dark);
+}
+
+.inputWhite{
+    background-color: var(--color-fondo-white);
+    color: var(--color-negro);
+}
+
+.inputDark{
+    background-color: var(--color-fondo-dark);
+    color: var(--color-blanco);
+}
+
+.textColorWhite{
+    color: var(--color-5);
+}
+
+.textColorDark{
+    color: var(--color-6);
+}
+
+.shadowColorWhite{
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+.shadowColorDark{
+    box-shadow: 0px 4px 15px 0px rgba(255, 255, 255, 0.2);
+}
+
+.dangerInput{
+    border: #DC3545 solid 3px;
+}
+
+.successInput{
+    border: #198754 solid 3px;
+}
+
+.btnLeftWhithe{
+    background-color: var(--color-fondo-white);
+    color: var(--color-5);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btnLeftWhithe:hover{
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+}
+
+.mainCEmail {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+}
+
+.sectionCEmail{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px 0px;
+    border-radius: 8px;
+}
+
+.cabecera{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.btnLeft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    clip-path: circle(50%);
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.tituloCEmail{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0;
+    margin: 10px 0px;
+}
+
+.msjCEmail{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.fCEmail{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cInput{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.inputClave {
+    width: 70px;
+    padding: 15px 5px;
+    border: 2px solid var(--color-gris);
+    border-radius: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.inputClave::-webkit-outer-spin-button,
+.inputClave::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputClave[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.btnREnviar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 8px;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btnREnviar:disabled {
+    background-color: var(--color-6);
+    color: var(--color-negro);
+    cursor: not-allowed;
+}
+
+.txtREmail{
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    padding: 0;
+}
+
+.lReenviarEmail{
+    font-weight: 600;
+}
+
+.lREmailWhite{
+    font-weight: 600;
+    color: var(--color-5);
+}
+
+.lREmailDark{
+    font-weight: 600;
+    color: var(--color-4);
+}
+
+@media (max-width: 1000px) {
+    .sectionCEmail{
+        width: 70%;
+    }
+}
+
+@media (max-width: 650px) {
+    .sectionCEmail{
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .sectionCEmail{
+        width: 100%;
+    }
+
+    .btnLeft {
+        width: 35px;
+        height: 35px;
+    }
+
+    .tituloCEmail{
+        font-size: 18px;
+    }
+
+    .msjCEmail{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .cInput{
+        margin-bottom: 10px;
+    }
+
+    .inputClave {
+        width: 45px;
+        padding: 7.5px 5px;
+        font-size: 14px;
+    }
+
+    .btnREnviar{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .txtREmail{
+        font-size: 14px;
+    }
+}
