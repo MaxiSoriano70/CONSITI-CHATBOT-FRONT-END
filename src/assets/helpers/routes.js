@@ -3,5 +3,6 @@ export const routes = {
     register: "/register",
     forgottenPassword: "/forgottenPassword",
     checkEmail: "/checkEmail",
-    confirmPassword: "/confirmPassword"
+    confirmPassword: "/confirmPassword",
+    hecho: "/hecho"
 }
