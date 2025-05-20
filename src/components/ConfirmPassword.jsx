@@ -1,13 +1,59 @@
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from '../css/ConfirmPassword.module.css';
 import { useChatBotStates } from '../Context';
+import axios from 'axios';
 
 const ConfirmPassword = () => {
     const { modoDarkLight } = useChatBotStates();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const { email, code } = location.state || {};
+
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordValid, setPasswordValid] = useState(null);
+    const [confirmValid, setConfirmValid] = useState(null);
+    const [formValid, setFormValid] = useState(false);
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
 
     const temaFondo = modoDarkLight ? styles.fondoDark : styles.fondoWhite;
     const temaModo = modoDarkLight ? styles.modoDark : styles.modoWhite;
     const temaInput = modoDarkLight ? styles.inputDark : styles.inputWhite;
     const temaEye = modoDarkLight ? styles.btnEyeDark : styles.btnEyeWhite;
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+    useEffect(() => {
+        const isPasswordValid = passwordRegex.test(password);
+        const isConfirmValid = password === confirmPassword && confirmPassword !== '';
+
+        setPasswordValid(password ? isPasswordValid : null);
+        setConfirmValid(confirmPassword ? isConfirmValid : null);
+        setFormValid(isPasswordValid && isConfirmValid);
+    }, [password, confirmPassword]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+        const response = await axios.post('http://localhost:3000/auth/password-reset/confirm', {
+            email,
+            code,
+            newPassword: password
+        });
+
+        console.log(response.data);
+        alert('Contraseña actualizada correctamente');
+        navigate('/hecho');
+        } catch (error) {
+        console.error(error);
+        alert('Hubo un error al actualizar la contraseña.');
+        }
+    };
 
     return (
         <main className={`${styles.mainFPassword} ${temaFondo}`}>
@@ -22,19 +68,29 @@ const ConfirmPassword = () => {
             </p>
             </div>
 
-            <form className={styles.fRestablecer}>
+            <form className={styles.fRestablecer} onSubmit={handleSubmit}>
             <div className={styles.cInput}>
                 <label className={styles.lblEmail} htmlFor="password">Contraseña</label>
                 <div className={styles.inputWrapper}>
                 <input
-                    className={`${styles.inputPassword} ${temaInput}`}
-                    type="password"
+                    className={`
+                    ${styles.inputPassword} ${temaInput}
+                    ${passwordValid === true ? styles.successInput : ""}
+                    ${passwordValid === false ? styles.dangerInput : ""}
+                    `}
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
-                    placeholder="Ingresa su nueva contraseña"
+                    placeholder="Ingresa tu nueva contraseña"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="button" className={`${styles.btnEye} ${temaEye}`}>
-                    <i className="fa-solid fa-eye"></i>
+                <button
+                    type="button"
+                    className={`${styles.btnEye} ${temaEye}`}
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                 </button>
                 </div>
             </div>
@@ -43,19 +99,35 @@ const ConfirmPassword = () => {
                 <label className={styles.lblEmail} htmlFor="confirmPassword">Confirmar contraseña</label>
                 <div className={styles.inputWrapper}>
                 <input
-                    className={`${styles.inputPassword} ${temaInput}`}
-                    type="password"
-                    name="password"
+                    className={`
+                    ${styles.inputPassword} ${temaInput}
+                    ${confirmValid === true ? styles.successInput : ""}
+                    ${confirmValid === false ? styles.dangerInput : ""}
+                    `}
+                    type={showConfirm ? "text" : "password"}
+                    name="confirmPassword"
                     id="confirmPassword"
                     placeholder="Vuelva a introducir la contraseña"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <button type="button" className={`${styles.btnEye} ${temaEye}`}>
-                    <i className="fa-solid fa-eye"></i>
+                <button
+                    type="button"
+                    className={`${styles.btnEye} ${temaEye}`}
+                    onClick={() => setShowConfirm(!showConfirm)}
+                >
+                    <i className={`fa-solid ${showConfirm ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                 </button>
                 </div>
             </div>
 
-            <button className={styles.btnRestablecer}>Actualizar contraseña</button>
+            <button
+                type="submit"
+                className={styles.btnRestablecer}
+                disabled={!formValid}
+            >
+                Actualizar contraseña
+            </button>
             </form>
         </section>
         </main>
