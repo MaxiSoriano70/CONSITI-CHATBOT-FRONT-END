@@ -39,21 +39,56 @@ const ConfirmPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-        const response = await axios.post('http://localhost:3000/auth/password-reset/confirm', {
-            email,
-            code,
-            newPassword: password
+        Swal.fire({
+            title: "Enviando...",
+            text: "Por favor espera mientras procesamos tu solicitud",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading(),
+            ...(modoDarkLight && {
+                background: "#1e1e1e",
+                color: "#ffffff",
+                customClass: { popup: "swal2-dark" }
+            })
         });
 
-        console.log(response.data);
-        alert('Contraseña actualizada correctamente');
-        navigate('/hecho');
+        try {
+            const response = await axios.post('http://localhost:3000/auth/password-reset/confirm', {
+                email,
+                code,
+                newPassword: password
+            });
+
+            Swal.close();
+
+            await Swal.fire({
+                icon: "success",
+                title: "Contraseña actualizada",
+                text: "Tu contraseña ha sido actualizada correctamente.",
+                confirmButtonColor: "#3085d6",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: "swal2-dark" }
+                })
+            });
+
+            navigate('/hecho');
+
         } catch (error) {
-        console.error(error);
-        alert('Hubo un error al actualizar la contraseña.');
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.response?.data?.message || 'Hubo un error al actualizar la contraseña.',
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: "swal2-dark" }
+                })
+            });
         }
     };
+
 
     return (
         <main className={`${styles.mainFPassword} ${temaFondo}`}>

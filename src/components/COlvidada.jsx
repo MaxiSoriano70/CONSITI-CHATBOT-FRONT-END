@@ -20,32 +20,71 @@ const ForgotPassword = () => {
 
 
     const validateEmail = (value) => {
-        console.log("Typed:", value);
         setEmail(value);
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         setEmailValid(emailRegex.test(value));
-        console.log(emailRegex.test(value));
     };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!emailValid) {
-        alert("Por favor ingresa un email válido.");
-        return;
-    }
+        e.preventDefault();
 
-    try {
-        const response = await axios.post("http://localhost:3000/auth/password-reset/request", {
-            email
-        });
+        if (!emailValid) {
+            Swal.fire({
+                icon: "error",
+                title: "Email inválido",
+                text: "Por favor ingresa un email válido.",
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: {
+                        popup: 'swal2-dark'
+                    }
+                })
+            });
+            return;
+        }
 
-        console.log("Respuesta:", response.data);
-        navigate("/checkEmail", { state: { email } });
-    } catch (error) {
-        console.error("Error al enviar el email:", error);
-        alert("Ocurrió un error. Intenta nuevamente.");
-    }
-};
+        try {
+            Swal.fire({
+                title: "Enviando...",
+                text: "Por favor espera mientras procesamos tu solicitud",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: {
+                        popup: "swal2-dark"
+                    }
+                })
+            });
+
+            const response = await axios.post("http://localhost:3000/auth/password-reset/request", { email });
+
+            Swal.close();
+
+            navigate("/checkEmail", { state: { email } });
+
+        } catch (error) {
+            Swal.close();
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Ocurrió un error. Intenta nuevamente.",
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: {
+                        popup: 'swal2-dark'
+                    }
+                })
+            });
+        }
+    };
 
 
     return (
@@ -75,7 +114,7 @@ const ForgotPassword = () => {
                             placeholder="Ingresa tu email"
                         />
                     </div>
-                    <button className={styles.btnRestablecer}>Restablecer contraseña</button>
+                    <button className={styles.btnRestablecer} disabled={!emailValid}>Restablecer contraseña</button>
                 </form>
             </section>
         </main>

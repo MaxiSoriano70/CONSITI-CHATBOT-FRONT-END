@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../css/CheckEmail.module.css';
 import { useChatBotStates } from '../Context';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const CheckEmail = () => {
     const { modoDarkLight } = useChatBotStates();
+    const [isComplete, setIsComplete] = useState(false);
+
 
     const temaFondo = modoDarkLight ? styles.fondoDark : styles.fondoWhite;
     const temaModo = modoDarkLight ? styles.modoDark : styles.modoWhite;
@@ -28,49 +30,102 @@ const CheckEmail = () => {
         e.target.value = value;
 
         if (value && index < 4) {
-        inputRefs.current[index + 1]?.focus();
+            inputRefs.current[index + 1]?.focus();
         }
 
         if (!value && index > 0) {
-        inputRefs.current[index - 1]?.focus();
+            inputRefs.current[index - 1]?.focus();
         }
+
+        const code = inputRefs.current.map(input => input?.value.trim()).join('');
+        setIsComplete(code.length === 5);
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const inputs = inputRefs.current;
+        const code = inputs.map(input => input?.value.trim()).join('');
+
         if (!email) {
-        alert('No se ha encontrado el email.');
-        return;
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "No se ha encontrado el email.",
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: 'swal2-dark' }
+                })
+            });
+            return;
         }
 
-        const inputs = inputRefs.current;
-        const code = inputs.map(input => input.value.trim()).join('');
-
-        if (inputs.some(input => input.value.trim() === '')) {
-        alert('Por favor, completa todos los campos del código.');
-        return;
+        if (inputs.some(input => input?.value.trim() === '')) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Por favor, completa todos los campos del código.",
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: 'swal2-dark' }
+                })
+            });
+            return;
         }
 
         if (!/^\d{5}$/.test(code)) {
-        alert('El código debe tener exactamente 5 dígitos numéricos.');
-        return;
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El código debe tener exactamente 5 dígitos numéricos.",
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: 'swal2-dark' }
+                })
+            });
+            return;
         }
 
-        try {
-        const response = await axios.post('http://localhost:3000/auth/password-reset/check-code', {
-            email,
-            code
-        }, {
-            headers: { 'Content-Type': 'application/json' }
+        Swal.fire({
+            title: "Enviando...",
+            text: "Por favor espera mientras procesamos tu solicitud",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading(),
+            ...(modoDarkLight && {
+                background: "#1e1e1e",
+                color: "#ffffff",
+                customClass: { popup: "swal2-dark" }
+            })
         });
 
-        console.log(response.data);
-        navigate('/confirmPassword', { state: { email, code } });
+        try {
+            const response = await axios.post('http://localhost:3000/auth/password-reset/check-code', {
+                email,
+                code
+            });
+
+            Swal.close();
+            navigate('/confirmPassword', { state: { email, code } });
 
         } catch (error) {
-        console.error(error);
-        alert(error.response?.data?.message || 'Código inválido o expirado. Intenta nuevamente.');
+            Swal.fire({
+                icon: "error",
+                title: "Código incorrecto o expirado",
+                text: error.response?.data?.message || 'Intenta nuevamente.',
+                confirmButtonColor: "#d33",
+                ...(modoDarkLight && {
+                    background: "#1e1e1e",
+                    color: "#ffffff",
+                    customClass: { popup: 'swal2-dark' }
+                })
+            });
         }
     };
 
@@ -103,7 +158,7 @@ const CheckEmail = () => {
                 ))}
             </div>
 
-            <button type="submit" className={styles.btnREnviar}>Verificar Código</button>
+            <button type="submit" className={styles.btnREnviar} disabled={!isComplete}>Verificar Código</button>
 
             <p className={styles.txtREmail}>
                 ¿Aún no has recibido el correo?{' '}
