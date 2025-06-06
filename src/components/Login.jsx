@@ -5,7 +5,7 @@ import { useChatBotStates } from "../Context";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { routes } from '../assets/helpers/routes';
-import axios from 'axios'; // 👈 Agregado
+import axios from 'axios';
 
 const Login = () => {
     const { nombreProyecto } = useChatBotStates();
