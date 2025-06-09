@@ -1,4 +1,5 @@
 export const routes = {
+    chat: "/",
     login: "/login",
     register: "/register",
     forgottenPassword: "/forgottenPassword",
