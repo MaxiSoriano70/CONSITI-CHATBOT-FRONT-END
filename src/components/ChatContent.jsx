@@ -5,7 +5,7 @@ import ChatYou from "./ChatYou";
 import HistoryChat from "./HistoryChat";
 import SeperadorDay from "./SeperadorDay";
 
-const ChatContent = () => {
+const ChatContent = ({ sidebarVisible }) => {
     const { modoDarkLight } = useChatBotStates();
 
     // Clases condicionales con CSS Modules
@@ -22,10 +22,13 @@ const ChatContent = () => {
     const btnEnviarClass = modoDarkLight ? styles.btnEnviarDark : styles.btnEnviarWhite;
     const btnFileClass = modoDarkLight ? styles.btnFileDark : styles.btnFileWhite;
 
+    const contentSidebarClass = `${styles.contentSidebar} ${sidebarVisible ? styles.active : styles.desactive}`;
+    const conversationClass = `${styles.conversation} ${sidebarVisible ? styles.desactive : styles.active}`;
+
 
     return (
         <div className={styles.chatContent}>
-            <div className={`${styles.contentSidebar} ${styles.active}`}>
+            <div className={contentSidebarClass}>
                 <div className={styles.contentSidebarTitle}>
                     <p className={styles.title}>Chats</p>
                     <div className={styles.containerButtons}>
@@ -75,7 +78,7 @@ const ChatContent = () => {
                 </div>
             </div>
 
-            <div className={`${styles.conversation} ${styles.desactive}`}>
+            <div className={conversationClass}>
                 <div className={sectionHeaderClass}>
                     <h2 className={styles.titleConversation}>Chatbot UI</h2>
                 </div>
