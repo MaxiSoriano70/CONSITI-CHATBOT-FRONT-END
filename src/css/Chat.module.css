@@ -1,0 +1,1273 @@
+:root {
+    --color-1: #079474;
+    --color-2: #10a37f;
+    --color-3: #A484E8;
+    --color-4: #D5C1FF;
+    --color-5 : #4e42c0;
+    --color-6 : #5c51da;
+    --color-7 : #cbd3fa;
+    --color-fondo-white: #F4F4F4;
+    --color-mode-white: #FFF;
+    --color-linea-white: #BFBFBF;
+    --color-fondo-dark: #1E1F22;
+    --color-mode-dark: #404450;
+    --color-linea-dark: #BFBFBF;
+    --color-blanco: #fff;
+    --color-negro: #000;
+    --color-gris: #D6D6D6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.fondoWhite{
+    background-color: var(--color-fondo-white);
+}
+
+.fondoDark{
+    background-color: var(--color-fondo-dark);
+}
+
+.modoWhite{
+    background-color: var(--color-mode-white);
+    color: var(--color-negro);
+}
+
+.modoDark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+}
+
+.lineaWhite{
+    background-color: var(--color-linea-white);
+}
+
+.lineaDark{
+    background-color: var(--color-linea-dark);
+}
+
+.inputWhite{
+    background-color: var(--color-fondo-white);
+    color: var(--color-negro);
+}
+
+.inputDark{
+    background-color: var(--color-fondo-dark);
+    color: var(--color-blanco);
+}
+
+.textColorWhite{
+    color: var(--color-5);
+}
+
+.textColorDark{
+    color: var(--color-6);
+}
+
+.shadowColorWhite{
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+.shadowColorDark{
+    box-shadow: 0px 4px 15px 0px rgba(255, 255, 255, 0.2);
+}
+
+.dangerInput{
+    border: #DC3545 solid 3px;
+}
+
+.successInput{
+    border: #198754 solid 3px;
+}
+
+/*Comienza chat*/
+.chatMain{
+    box-shadow: inset 0 160px 0 0 var(--color-1);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatSection{
+    max-width: 1360px;
+    width: 100%;
+    height: 720px;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, .1);
+    position: relative;
+}
+
+.chatSectionWhite{
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.chatSectionBlack{
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+}
+/*Termina chat*/
+
+/*Comienza chatSidebar*/
+.chatSidebar{
+    width: 64px;
+    height: 100%;
+    border-right: solid 1px var(--color-linea-white);
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.btnSidebarLeft {
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    clip-path: circle(50% at 50% 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    position: absolute;
+    right: -18px;
+    top: 17px;
+    transform: none;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.btnSidebarLeft:hover {
+    background-color: var(--color-6);
+}
+
+.chatSidebarLogo{
+    font-size: 24px;
+    display: block;
+    text-align: center;
+}
+
+.logoSiderbar{
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.logoSiderbarWhite{
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+}
+
+.logoSiderbarBlack{
+    background-color: var(--color-3);
+    color: var(--color-negro);
+}
+
+.chatSidebarMenu{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 0px 0px 0px;
+    gap: 10px;
+}
+
+.menuLi{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+    margin: 0px;
+}
+
+.menuLiActive {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+    margin: 0px;
+    box-shadow: inset 4px 0 0 0 var(--color-5);
+    color: var(--color-5);
+    border-radius: 0 10px 10px 0;
+    transition: box-shadow 0.4s ease, color 0.4s ease, background-color 0.4s ease;
+}
+
+
+.btnSidebarMenu{
+    display: block;
+    text-align: center;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: color .15s ease-in-out;
+}
+
+.btnSidebarMenuWhite{
+    background-color: var(--color-fondo-white);
+    color: var(--color-5);
+}
+
+.btnSidebarMenuBlack{
+    background-color: var(--color-mode-dark);
+    color: var(--color-3);
+}
+
+.btnSidebarMenu:hover{
+    color: var(--color-blanco);
+    background-color: var(--color-5);
+}
+
+.btnSidebarMenuWhite::before{
+    content: attr(data-title);
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 5px);
+    border-radius: 5px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, .6);
+    color: var(--color-blanco);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: left bottom;
+    transition:  all .15s ease-in-out;
+}
+
+.btnSidebarMenuBlack::before{
+    content: attr(data-title);
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 5px);
+    border-radius: 5px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-negro);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: left bottom;
+    transition:  all .15s ease-in-out;
+}
+
+.btnSidebarMenu:hover::before{
+    left: calc(100% + 5px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.chatSidebarProfile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    list-style-type: none;
+    margin-top: auto;
+    position: relative;
+}
+
+.chatSidebarProfileToggle{
+    background-color: transparent;
+    border: none;
+    outline: transparent;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+
+.imgProfile{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.chatSidebarProfileDropdown{
+    position: absolute;
+    bottom: 100%;
+    left: 16px;
+    list-style-type: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(.9);
+    transform-origin: left bottom;
+    transition:  all .15s ease-in-out;
+}
+
+.chatSidebarProfileDropdownWhite{
+    background-color: var(--color-blanco);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+}
+
+.chatSidebarProfileDropdownBlack{
+    background-color: var(--color-negro);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, .3);
+}
+
+.chatSidebarProfileDropdown.active{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.dropdownLink{
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdownLinkWhite{
+    color: var(--color-negro);
+}
+
+.dropdownLinkWhite:hover{
+    background-color: var(--color-gris);
+}
+
+.dropdownLinkBlack{
+    color: var(--color-blanco);
+}
+
+.dropdownLinkBlack:hover{
+    background-color: var(--color-mode-dark);
+}
+
+.dropdownLink i{
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+/*Termina chatSidebar*/
+
+/*Comienza chatContent*/
+
+.chatContent{
+    padding-left: 64px;
+    height: 100%;
+    position: relative;
+}
+
+.contentSidebar{
+    width: 320px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-right: solid 1px var(--color-linea-white);
+    position: absolute;
+    top: 0;
+    left: 64px;
+    flex-shrink: 0;
+}
+
+.contentSidebarTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.containerButtons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.btnPersonalizado1 {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnPersonalizado1:hover {
+    background-color: var(--color-6);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnPersonalizado1:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btnPersonalizado2 {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnPersonalizado2:hover {
+    background-color: var(--color-6);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnPersonalizado2:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contentSidebarButtonsWhite{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gris);
+    padding: 5px;
+    gap: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.contentSidebarButtonsBlack{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-mode-dark);
+    padding: 5px;
+    gap: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btnSidebar{
+    width: 50%;
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+    border: none;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnSidebarWhite{
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.btnSidebarBlack{
+    background-color: var(--color-fondo-dark);
+    color: var(--color-blanco);
+}
+
+.btnSidebar.active{
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+}
+
+.btnSidebar:hover {
+    background-color: var(--color-6);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnSidebar:hover .nCantidad {
+    background-color: var(--color-4);
+    color: var(--color-5);
+}
+
+.btnSidebar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nCantidad{
+    border-radius: 5px;
+    padding: 3.5px;
+    font-size: 10px;
+}
+
+.nCantidadWhite{
+    background-color: var(--color-fondo-white);
+}
+
+.nCantidadBlack{
+    background-color: var(--color-mode-dark);
+}
+
+.nCantidad.active{
+    background-color: var(--color-4);
+    color: var(--color-5);
+}
+
+.contentSearchWhite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: var(--color-gris);
+}
+
+.contentSearchDark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: var(--color-mode-dark);
+}
+
+.containerInput {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-blanco);
+    border-radius: 5px;
+    padding: 8px 10px;
+    flex: 1;
+}
+
+.cInputWhite {
+    background-color: var(--color-blanco);
+}
+
+.cInputDark {
+    background-color: var(--color-negro);
+}
+
+.cInputWhite i {
+    color: var(--color-5);
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.cInputWhite input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: var(--color-negro);
+}
+
+.cInputDark i {
+    color: var(--color-3);
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.cInputDark input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: var(--color-blanco);
+}
+
+.contentHistoryChat{
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-right: 5px;
+    margin-top: 15px;
+}
+
+.contentHistoryChat.white::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contentHistoryChat.white::-webkit-scrollbar-track {
+    background: var(--color-blanco);
+    border-radius: 10px;
+}
+
+.contentHistoryChat.white::-webkit-scrollbar-thumb {
+    background-color: var(--color-linea-white);
+    border-radius: 10px;
+}
+
+.contentHistoryChat.white::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-mode-dark);
+}
+
+.contentHistoryChat.black::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contentHistoryChat.black::-webkit-scrollbar-track {
+    background: var(--color-mode-dark);
+    border-radius: 10px;
+}
+
+.contentHistoryChat.black::-webkit-scrollbar-thumb {
+    background-color: var(--color-linea-dark);
+    border-radius: 10px;
+}
+
+.contentHistoryChat.black::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-gris);
+}
+
+.historyChat{
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 10px 7.5px;
+    cursor: pointer;
+}
+
+.historyChatWhite{
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.historyChatWhite:hover{
+    background-color: var(--color-4);
+}
+
+.historyChatDark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+}
+
+.historyChatDark:hover{
+    background-color: var(--color-4);
+    color: var(--color-negro);
+}
+
+.headerHistoryChat{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.historyChatTitle {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+.historyChatTimeWhite {
+    color: var(--color-mode-dark);
+    white-space: nowrap;
+}
+
+.historyChatTimeDark {
+    color: var(--color-mode-white);
+    white-space: nowrap;
+}
+
+.historyChatDark:hover .historyChatTimeDark {
+    color: var(--color-mode-dark);
+}
+
+.bodyHistoryChat{
+    flex: 1;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.historyChatTxt {
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+/*Termina chatContent*/
+
+/*Comienza conversation*/
+.conversation{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    padding-left: 320px;
+}
+
+.sectionHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.vWhite{
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.vDark{
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+}
+
+.sectionBody{
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+.sectionBody.white::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sectionBody.white::-webkit-scrollbar-track {
+    background: var(--color-blanco);
+    border-radius: 10px;
+}
+
+.sectionBody.white::-webkit-scrollbar-thumb {
+    background-color: var(--color-linea-white);
+    border-radius: 10px;
+}
+
+.sectionBody.white::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-mode-dark);
+}
+
+.sectionBody.black::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sectionBody.black::-webkit-scrollbar-track {
+    background: var(--color-mode-dark);
+    border-radius: 10px;
+}
+
+.sectionBody.black::-webkit-scrollbar-thumb {
+    background-color: var(--color-linea-dark);
+    border-radius: 10px;
+}
+
+.sectionBody.black::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-gris);
+}
+
+.sBodyWhite{
+    background-color: var(--color-fondo-white);
+}
+
+.sBodyDark{
+    background-color: var(--color-fondo-dark);
+}
+
+.separadorDay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    color: var(--color-linea-white);
+    font-weight: bold;
+}
+
+.linea {
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-linea-dark);
+}
+
+.chatYou{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.imgPerfil {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.youBody{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.youHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 5px;
+}
+
+.yHeaderWhite{
+    color: var(--color-negro);
+}
+
+.yHeaderDark{
+    color: var(--color-blanco);
+}
+
+.spanYou{
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.spanDate{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.youFooter{
+    width: 100%;
+    border-radius: 0px 10px 10px 10px;
+    padding: 10px;
+}
+
+.yFooterWhite{
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.yFooterDark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+}
+
+.contentEdit{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 5px;
+}
+
+.btnEdit.white{
+    background-color: var(--color-blanco);
+    color: var(--color-5);
+    border: none;
+    padding: 5px 7.5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnEdit.white:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnEdit.dark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+    border: none;
+    padding: 5px 7.5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnEdit.dark:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.chatbot{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.containerLogoBot{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7.5px;
+    clip-path: circle();
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.iconPerfil {
+    font-size: 16px;
+}
+
+.chatbotBody{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.chatbotHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.headerTxt {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 5px;
+}
+
+.spanResponse{
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.spanResponseDate{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.page{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 5px;
+}
+
+.btnPage{
+    background-color: var(--color-gris);
+    color: var(--color-negro);
+    border: none;
+    padding: 0.5px 3.5px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnPage:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+}
+
+.cantidadPage{
+    font-size: 14px;
+    padding: 0px 10px;
+}
+
+.youFooterBot{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    background-color: var(--color-4);
+    color: var(--color-negro);
+    border-radius: 0px 10px 10px 10px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.contentButtonsBot{
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    gap: 10px;
+}
+
+.btnChatBot{
+    background-color: var(--color-3);
+    color: var(--color-negro);
+    border: none;
+    padding: 5px 7.5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnChatBot:hover {
+    background-color: var(--color-6);
+    color: var(--color-blanco);
+}
+
+.sectionFooter{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 20px;
+}
+
+.inputSend {
+    flex: 1;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.iSendWhite{
+    background-color: var(--color-fondo-white);
+    color: var(--color-negro);
+}
+
+.iSendDark{
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+}
+
+.btnEnviarWhite {
+    background-color: var(--color-6);
+    color: var(--color-blanco);
+    border: none;
+    padding: 7.5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnEnviarWhite:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnEnviarDark {
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+    border: none;
+    padding: 7.5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnEnviarDark:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnFileWhite {
+    background-color: var(--color-6);
+    color: var(--color-blanco);
+    border: none;
+    padding: 7.5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnFileWhite:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btnFileDark {
+    background-color: var(--color-mode-dark);
+    color: var(--color-blanco);
+    border: none;
+    padding: 7.5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btnFileDark:hover {
+    background-color: var(--color-5);
+    color: var(--color-blanco);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/*Comienza conversation*/
+
+/*Termina */
+
+/*Comienza Medias Queries*/
+@media screen and (max-width: 1600px) {
+    .chatSection{
+        max-width: unset;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    @keyframes wipe-in-right {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    [transition-style="in:wipe:right"] {
+        animation: wipe-in-right 2.5s cubic-bezier(.25, 1, .30, 1) both;
+    }
+
+    .btnSidebarLeft {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .chatSidebarLogo{
+        font-size: 16px;
+    }
+
+    .logoSiderbar{
+        background-color: var(--color-5);
+        color: var(--color-blanco);
+        padding: 7.5px;
+        border-radius: 8px;
+        margin: 6.5px 0px;
+    }
+
+    .contentSidebar.desactive {
+        opacity: 0;
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .contentSidebar.active {
+        width: calc(100% - 64px);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .conversation{
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .conversation.desactive {
+        opacity: 0;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .conversation.active {
+        width: 100%;
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+
+    .title{
+        margin-left: 20px;
+    }
+
+    .titleConversation{
+        margin-left: 15px;
+    }
+}
+/*Termina Medias Queries*/
