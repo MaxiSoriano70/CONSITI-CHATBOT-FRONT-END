@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { useChatBotStates } from "../Context";
 import styles from "../css/Hecho.module.css";
+import { routes } from "../assets/helpers/routes";
 
 const Hecho = () => {
     const { modoDarkLight } = useChatBotStates();
@@ -18,9 +20,9 @@ const Hecho = () => {
                 <p className={styles.msjFPassword}>
                     Su contraseña ha cambiado. Para continuar haga clic en iniciar sesión
                 </p>
-                <button className={styles.btnRestablecer} disabled>
+                <Link to={routes.login} className={styles.btnRestablecer}>
                     Iniciar Sesión
-                </button>
+                </Link>
             </section>
         </main>
     );
