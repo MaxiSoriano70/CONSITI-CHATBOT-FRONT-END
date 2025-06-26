@@ -1,6 +1,6 @@
 import styles from '../css/Chat.module.css';
 
-const Chatbot = () => {
+const Chatbot = ({ response }) => {
     return (
         <div className={styles.chatbot}>
             <div className={styles.containerLogoBot}>
@@ -20,7 +20,7 @@ const Chatbot = () => {
                 </div>
                 <div className={styles.youFooterBot}>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eum molestias delectus rem culpa sint sapiente voluptatibus doloremque nisi deserunt sit fugiat magnam, laboriosam voluptatum corrupti assumenda perferendis reiciendis accusamus.
+                        {response}
                     </p>
                     <div className={styles.contentButtonsBot}>
                         <button className={styles.btnChatBot}>

@@ -1,7 +1,7 @@
 import { useChatBotStates } from "../Context";
 import styles from '../css/Chat.module.css';
 
-const HistoryChat = () => {
+const HistoryChat = ({ question, answer, index }) => {
     const { modoDarkLight } = useChatBotStates();
 
     const historyChatModo = modoDarkLight ? styles.historyChatDark : styles.historyChatWhite;
@@ -12,13 +12,13 @@ const HistoryChat = () => {
             <div className={styles.headerHistoryChat}>
                 <i className={`fa-solid fa-robot ${styles.iconoBot}`}></i>
                 <div className={styles.historyChatTitle}>
-                    Cosmic Evolution
+                    {question}
                 </div>
                 <span className={timeClass}>Now</span>
             </div>
             <div className={styles.bodyHistoryChat}>
                 <span className={styles.historyChatTxt}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, quas perferendis, enim architecto ratione repudiandae laborum, molestiae sequi dolorum quis hic magnam? Odit vitae officiis voluptatum modi alias quasi et.
+                    {answer}
                 </span>
             </div>
         </div>
