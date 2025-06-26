@@ -2,7 +2,7 @@ import { useChatBotStates } from "../Context";
 import styles from '../css/Chat.module.css';
 import imgPerfil from '../assets/img/Pingu.jpg';
 
-const ChatYou = () => {
+const ChatYou = ({ question }) => {
     const { modoDarkLight } = useChatBotStates();
 
     const headerModo = modoDarkLight ? styles.yHeaderDark : styles.yHeaderWhite;
@@ -19,7 +19,7 @@ const ChatYou = () => {
                 </div>
                 <div className={`${styles.youFooter} ${footerModo}`}>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eum molestias delectus rem culpa sint sapiente voluptatibus doloremque nisi deserunt sit fugiat magnam, laboriosam voluptatum corrupti assumenda perferendis reiciendis accusamus.
+                        { question }
                     </p>
                 </div>
                 <div className={styles.contentEdit}>

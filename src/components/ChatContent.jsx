@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useChatBotStates } from "../Context";
 import styles from '../css/Chat.module.css';
 import Chatbot from "./Chatbot";
@@ -8,7 +9,6 @@ import SeperadorDay from "./SeperadorDay";
 const ChatContent = ({ sidebarVisible }) => {
     const { modoDarkLight } = useChatBotStates();
 
-    // Clases condicionales con CSS Modules
     const sidebarButtonsClass = modoDarkLight ? styles.contentSidebarButtonsBlack : styles.contentSidebarButtonsWhite;
     const btnSidebarClass = modoDarkLight ? styles.btnSidebarBlack : styles.btnSidebarWhite;
     const nCantidadClass = modoDarkLight ? styles.nCantidadBlack : styles.nCantidadWhite;
@@ -24,6 +24,34 @@ const ChatContent = ({ sidebarVisible }) => {
 
     const contentSidebarClass = `${styles.contentSidebar} ${sidebarVisible ? styles.active : styles.desactive}`;
     const conversationClass = `${styles.conversation} ${sidebarVisible ? styles.desactive : styles.active}`;
+
+    const [inputText, setInputText] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [chatHistory, setChatHistory] = useState([]);
+
+    const handleSend = async () => {
+        if (inputText.trim() === "") return;
+        setLoading(true);
+        try {
+            const response = await fetch("http://localhost:3000/chatbot", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: inputText })
+            });
+
+            const data = await response.json();
+
+            setChatHistory(prev => [...prev, { question: inputText, answer: data.answer }]);
+            setInputText("");
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
 
     return (
@@ -63,18 +91,14 @@ const ChatContent = ({ sidebarVisible }) => {
                 </div>
 
                 <div className={contentHistoryChatClass}>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
-                    <HistoryChat/>
+                    {chatHistory.map((chat, index) => (
+                        <HistoryChat
+                            key={index}
+                            question={chat.question}
+                            answer={chat.answer}
+                            index={index}
+                        />
+                    ))}
                 </div>
             </div>
 
@@ -84,27 +108,19 @@ const ChatContent = ({ sidebarVisible }) => {
                 </div>
 
                 <div className={sectionBodyClass}>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
-                    <SeperadorDay/>
-                    <ChatYou/>
-                    <Chatbot/>
+                    {chatHistory.map((chat, index) => (
+                        <div key={index}>
+                            <ChatYou question={chat.question} />
+                            <Chatbot response={chat.answer} />
+                            <SeperadorDay />
+                        </div>
+                    ))}
+
+                    {loading && (
+                        <div className={styles.loadingContainer}>
+                            <i className="fa-solid fa-spinner fa-spin"></i>
+                        </div>
+                    )}
                 </div>
 
                 <div className={sectionFooterClass}>
@@ -112,13 +128,21 @@ const ChatContent = ({ sidebarVisible }) => {
                         className={inputSendClass}
                         type="text"
                         placeholder="Pregunta lo que quieras..."
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && handleSend()}
                     />
-                    <button className={btnEnviarClass}>
+                    <button
+                        className={btnEnviarClass}
+                        onClick={handleSend}
+                        disabled={loading}
+                    >
                         <i className="fa-solid fa-right-long"></i>
                     </button>
                     <button className={btnFileClass}>
                         <i className="fa-solid fa-paperclip"></i>
                     </button>
+
                 </div>
             </div>
         </div>
